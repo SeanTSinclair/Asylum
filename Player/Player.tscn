@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Hero spritesheet PINK with shadow.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -127,48 +127,6 @@ tracks/0/keys = {
 "values": [ 30, 31, 32, 33, 34, 35, 36, 37 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=11]
-animation = "run_left"
-
-[sub_resource type="AnimationNodeAnimation" id=12]
-animation = "run_right"
-
-[sub_resource type="AnimationNodeAnimation" id=13]
-animation = "run_up"
-
-[sub_resource type="AnimationNodeAnimation" id=14]
-animation = "run_down"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=15]
-blend_point_0/node = SubResource( 11 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 12 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 13 )
-blend_point_2/pos = Vector2( 0, -1.1 )
-blend_point_3/node = SubResource( 14 )
-blend_point_3/pos = Vector2( 0, 1.1 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id=16]
-animation = "idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
-
-[sub_resource type="AnimationNodeStateMachine" id=4]
-states/Run/node = SubResource( 15 )
-states/Run/position = Vector2( 447, 97 )
-states/idle/node = SubResource( 16 )
-states/idle/position = Vector2( 301, 97 )
-transitions = [ "idle", "Run", SubResource( 17 ), "Run", "idle", SubResource( 18 ) ]
-start_node = "idle"
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
-
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -188,6 +146,7 @@ script = ExtResource( 3 )
 
 [node name="PlayerStats" type="Node" parent="."]
 script = ExtResource( 4 )
+flashlight_speed_reduction_modifier = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
@@ -196,12 +155,6 @@ anims/run_down = SubResource( 9 )
 anims/run_left = SubResource( 8 )
 anims/run_right = SubResource( 6 )
 anims/run_up = SubResource( 10 )
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 4 )
-anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 5 )
-parameters/Run/blend_position = Vector2( 0, 0 )
 
 [node name="Rotator" type="Node2D" parent="."]
 

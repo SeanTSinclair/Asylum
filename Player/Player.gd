@@ -47,6 +47,10 @@ func flashlight_state(delta):
 	
 func position_crosshair():
 	rotator.look_at(get_global_mouse_position())
+	
+	if abs(rotator.rotation_degrees) > 360: 
+		rotator.rotation_degrees = 0
+		
 	if abs(rotator.rotation_degrees) > 90:
 		sprite.flip_h = false
 		flashlight.flip_v = true
