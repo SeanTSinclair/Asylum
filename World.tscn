@@ -1,8 +1,88 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ancient Rock Animations 36x51.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Ghost.tscn" type="PackedScene" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 51, 36, 51 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 36, 51, 36, 51 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 72, 51, 36, 51 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 108, 51, 36, 51 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 51, 36, 51 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 180, 51, 36, 51 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 216, 51, 36, 51 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 252, 51, 36, 51 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 7 ), SubResource( 6 ), SubResource( 4 ), SubResource( 3 ), SubResource( 2 ), SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="OccluderPolygon2D" id=10]
+polygon = PoolVector2Array( -10, 25, 11, 25, 12, 3, 8, -4, 3, -5, -5, -7, -10, -4, -11, 3, -10, 12 )
+
+[sub_resource type="CapsuleShape2D" id=11]
+height = 10.0
 
 [node name="World" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -86.0
+margin_top = -47.0
+margin_right = 444.0
+margin_bottom = 243.0
+color = Color( 0.156863, 0.203922, 0.211765, 1 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 111, 75 )
+
+[node name="Ghost" parent="." instance=ExtResource( 3 )]
+position = Vector2( 211, 34 )
+
+[node name="Ghost2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 225, 40 )
+
+[node name="Ghost3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 226, 23 )
+
+[node name="StuffInTheWay" type="Area2D" parent="."]
+position = Vector2( 164, 55 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="StuffInTheWay"]
+position = Vector2( 0, -9.5 )
+frames = SubResource( 9 )
+frame = 7
+playing = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StuffInTheWay/AnimatedSprite"]
+occluder = SubResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StuffInTheWay"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 11 )

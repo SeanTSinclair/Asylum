@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Ghost",
+"language": "GDScript",
+"path": "res://Enemies/Ghost.gd"
+} ]
+_global_script_class_icons={
+"Ghost": ""
+}
+
 [application]
 
 config/name="Asylum"
@@ -89,6 +99,15 @@ interact={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Flashlight"
+2d_physics/layer_4="Ghost"
+2d_physics/layer_5="MadMan"
+2d_physics/layer_6="Interactable"
 
 [physics]
 

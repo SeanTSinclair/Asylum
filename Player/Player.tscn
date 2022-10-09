@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Player/Hero spritesheet PINK with shadow.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Player/PlayerStats.gd" type="Script" id=4]
 [ext_resource path="res://Player/crosshair.png" type="Texture" id=5]
 [ext_resource path="res://Player/gun sprite PINK.png" type="Texture" id=6]
+[ext_resource path="res://Player/flashlight.png" type="Texture" id=7]
+[ext_resource path="res://Player/Flashlight.gd" type="Script" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
@@ -127,6 +129,48 @@ tracks/0/keys = {
 "values": [ 30, 31, 32, 33, 34, 35, 36, 37 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "run_left"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "run_up"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "run_down"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "run_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=17]
+blend_point_0/node = SubResource( 13 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 14 )
+blend_point_1/pos = Vector2( 0, -1.1 )
+blend_point_2/node = SubResource( 15 )
+blend_point_2/pos = Vector2( 0, 1.1 )
+blend_point_3/node = SubResource( 16 )
+blend_point_3/pos = Vector2( 1, 0 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachine" id=11]
+states/Run/node = SubResource( 17 )
+states/Run/position = Vector2( 374, 108 )
+states/idle/node = SubResource( 18 )
+states/idle/position = Vector2( 223, 108 )
+transitions = [ "idle", "Run", SubResource( 19 ), "Run", "idle", SubResource( 20 ) ]
+start_node = "idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -156,14 +200,65 @@ anims/run_left = SubResource( 8 )
 anims/run_right = SubResource( 6 )
 anims/run_up = SubResource( 10 )
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 11 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 12 )
+parameters/Run/blend_position = Vector2( 0, 0 )
+
 [node name="Rotator" type="Node2D" parent="."]
 
 [node name="Crosshair" type="Sprite" parent="Rotator"]
-position = Vector2( 40, 0 )
+modulate = Color( 1, 0.164706, 0, 1 )
+position = Vector2( 80, 0 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 5 )
 
-[node name="Flashlight" type="Sprite" parent="Rotator"]
+[node name="Flashlight" type="Node2D" parent="Rotator"]
+script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Rotator/Flashlight"]
 position = Vector2( 5, 0 )
 scale = Vector2( 0.6, 0.7 )
 texture = ExtResource( 6 )
+
+[node name="Light2D" type="Light2D" parent="Rotator/Flashlight"]
+position = Vector2( 7, 5.96046e-08 )
+scale = Vector2( 0.12, 0.07 )
+texture = ExtResource( 7 )
+offset = Vector2( 408.333, -14.2857 )
+color = Color( 0.427451, 0.403922, 0.219608, 0.658824 )
+shadow_enabled = true
+
+[node name="Raycasts" type="Node2D" parent="Rotator/Flashlight"]
+
+[node name="RayCast" type="RayCast2D" parent="Rotator/Flashlight/Raycasts"]
+cast_to = Vector2( 100, 0 )
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2" type="RayCast2D" parent="Rotator/Flashlight/Raycasts"]
+cast_to = Vector2( 100, 8 )
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast5" type="RayCast2D" parent="Rotator/Flashlight/Raycasts"]
+cast_to = Vector2( 100, 15 )
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast3" type="RayCast2D" parent="Rotator/Flashlight/Raycasts"]
+cast_to = Vector2( 100, -8 )
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast4" type="RayCast2D" parent="Rotator/Flashlight/Raycasts"]
+cast_to = Vector2( 100, -15 )
+collision_mask = 9
+collide_with_areas = true
+collide_with_bodies = false
