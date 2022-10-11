@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/Hero spritesheet PINK with shadow.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://Player/PlayerMovementController.gd" type="Script" id=3]
+[ext_resource path="res://Player/PlayerFSM.gd" type="Script" id=3]
 [ext_resource path="res://Player/PlayerStats.gd" type="Script" id=4]
 [ext_resource path="res://Player/crosshair.png" type="Texture" id=5]
 [ext_resource path="res://Player/gun sprite PINK.png" type="Texture" id=6]
@@ -185,10 +185,10 @@ visible = false
 position = Vector2( 0, 3 )
 shape = SubResource( 1 )
 
-[node name="MovementController" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[node name="PlayerStats" type="Node" parent="."]
+[node name="PlayerStats" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
 flashlight_speed_reduction_modifier = 0.1
 

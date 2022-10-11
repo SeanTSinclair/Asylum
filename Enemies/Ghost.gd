@@ -15,7 +15,7 @@ enum {
 var state = IDLE
 var stun_amount : float = 0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	match state:
 		IDLE:
 			pass

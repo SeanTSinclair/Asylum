@@ -10,7 +10,7 @@ var current_targets : Array = []
 func _ready():
 	disable_flashlight()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	for raycast in raycasts:
 		if raycast.is_colliding():
 			var collider = raycast.get_collider()
