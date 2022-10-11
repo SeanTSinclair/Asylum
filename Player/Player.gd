@@ -9,7 +9,7 @@ onready var animator = $AnimationTree
 onready var animation_state = animator.get("parameters/playback")
 
 var velocity : Vector2 = Vector2.ZERO
-var flashlight_direction : Vector2 = Vector2.DOWN
+var hiding : bool = false
 
 func _ready():
 	animator.active = true
@@ -27,7 +27,6 @@ func position_crosshair():
 		sprite.flip_h = true
 		flashlight_sprite.flip_v = false
 		
-
 func calculate_movement(input_vector, speed, stats, delta):
 	rotator.show_behind_parent = input_vector.y < 0
 	if input_vector != Vector2.ZERO:

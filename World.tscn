@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ancient Rock Animations 36x51.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/Ghost.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Locker.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -61,6 +62,9 @@ color = Color( 0.156863, 0.203922, 0.211765, 1 )
 
 [node name="YSort" type="YSort" parent="."]
 
+[node name="Locker" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 56, 100 )
+
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 111, 75 )
 
@@ -79,6 +83,7 @@ position = Vector2( 164, 55 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
+frame = 5
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay/AnimatedSprite"]
