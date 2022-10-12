@@ -63,7 +63,7 @@ color = Color( 0.156863, 0.203922, 0.211765, 1 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Locker" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 56, 100 )
+position = Vector2( 50, 43 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 111, 75 )
@@ -83,7 +83,7 @@ position = Vector2( 164, 55 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
-frame = 5
+frame = 7
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay/AnimatedSprite"]

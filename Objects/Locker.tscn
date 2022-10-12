@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Objects/Locker.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Locker.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 31.5 )
 
 [node name="Locker" type="Area2D"]
+scale = Vector2( 0.5, 0.5 )
 collision_layer = 33
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.458824, 0.458824, 0.458824, 1 )

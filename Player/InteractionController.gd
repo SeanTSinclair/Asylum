@@ -7,6 +7,13 @@ var current_icon = null
 func _ready():
 	var check_timer = get_tree().create_timer(.2)
 	check_timer.connect("timeout", self, "update_interaction_icon")
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("interact"):
+		var closest = get_nearest_interactable()
+		if closest != null:
+			if closest.has_method("interact"):
+				closest.interact(owner)
 
 func update_interaction_icon():
 	if interactables_in_range.size() != 0:

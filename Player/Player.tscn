@@ -179,6 +179,15 @@ radius = 19.0263
 collision_layer = 3
 script = ExtResource( 2 )
 
+[node name="Label" type="Label" parent="."]
+margin_left = -19.0
+margin_top = -22.0
+margin_right = 17.0
+margin_bottom = -8.0
+text = "move"
+align = 1
+valign = 1
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 flip_h = true

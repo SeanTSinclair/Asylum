@@ -7,12 +7,29 @@ onready var flashlight_sprite = $Rotator/Flashlight/Sprite
 onready var crosshair = $Rotator/Crosshair
 onready var animator = $AnimationTree
 onready var animation_state = animator.get("parameters/playback")
+onready var state_machine = $StateMachine
+onready var label = $Label
 
 var velocity : Vector2 = Vector2.ZERO
 var hiding : bool = false
 
 func _ready():
 	animator.active = true
+	
+func _process(delta):
+	label.text = str(state_machine.state)
+
+func hide():
+	sprite.visible = false
+	rotator.visible = false
+	hiding = true
+	state_machine.set_state(state_machine.states.hide)
+
+func reveal():
+	sprite.visible = true
+	rotator.visible = true
+	hiding = false
+	state_machine.set_state(state_machine.states.move)
 
 func position_crosshair():
 	rotator.look_at(get_global_mouse_position())
