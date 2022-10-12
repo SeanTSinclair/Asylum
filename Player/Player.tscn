@@ -180,10 +180,11 @@ collision_layer = 3
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = -19.0
-margin_top = -22.0
-margin_right = 17.0
-margin_bottom = -8.0
+margin_left = -5.0
+margin_top = -13.0
+margin_right = 31.0
+margin_bottom = 1.0
+rect_scale = Vector2( 0.3, 0.3 )
 text = "move"
 align = 1
 valign = 1

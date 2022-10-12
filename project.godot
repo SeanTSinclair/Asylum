@@ -36,6 +36,10 @@ config/name="Asylum"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameInfo="*res://Common/GameInfo.gd"
+
 [display]
 
 window/size/width=320

@@ -36,4 +36,4 @@ func set_state(new_state):
 		_enter_state(new_state, previous_state)
 
 func add_state(state_name):
-	states[state_name] = states.size()
+	states[state_name] = state_name

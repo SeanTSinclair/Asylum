@@ -24,6 +24,8 @@ func _state_logic(delta):
 		parent.calculate_movement(get_input_vector(), stats.base_speed, stats, delta)
 	if state == states.flashlight:
 		parent.calculate_movement(get_input_vector(), stats.using_flashlight_speed, stats, delta)
+	if state == states.hide:
+		parent.velocity = Vector2.ZERO
 		
 	parent.position_crosshair()
 	parent.apply_velocity()
@@ -36,7 +38,6 @@ func _get_transition(_delta):
 		states.flashlight:
 			if !Input.is_action_pressed("flashlight"):
 				return states.move
-		# TODO: ADD HIDE AND DEAD STATE TRANSITION
 	
 func _enter_state(new_state, _old_state):
 	if new_state == states.flashlight:

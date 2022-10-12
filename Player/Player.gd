@@ -16,7 +16,7 @@ var hiding : bool = false
 func _ready():
 	animator.active = true
 	
-func _process(delta):
+func _process(_delta):
 	label.text = str(state_machine.state)
 
 func hide():
