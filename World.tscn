@@ -101,7 +101,7 @@ position = Vector2( 164, 55 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay/AnimatedSprite"]
