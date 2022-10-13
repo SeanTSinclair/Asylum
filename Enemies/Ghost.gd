@@ -4,6 +4,7 @@ class_name Ghost
 const STUN_THRESHOLD = 100
 
 onready var collision = $CollisionShape2D
+onready var animated_sprite = $AnimatedSprite
 
 enum { 
 	IDLE,
@@ -29,11 +30,11 @@ func _physics_process(_delta):
 func add_stun_amount(amount):
 	if state != STUNNED:
 		stun_amount += amount
+		animated_sprite.material.set_shader_param("stun_amount", stun_amount / STUN_THRESHOLD)
 		if stun_amount >= STUN_THRESHOLD:
 			state = STUNNED
 			collision.disabled = true
 			print("Ghost %s is stunned!" % name)
-			
 			
 func reset_stun():
 	state = IDLE

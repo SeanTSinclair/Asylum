@@ -286,5 +286,10 @@ script = ExtResource( 8 )
 modulate = Color( 1, 1, 1, 0.25098 )
 shape = SubResource( 21 )
 
+[node name="Timer" type="Timer" parent="InteractionController"]
+wait_time = 0.2
+autostart = true
+
 [connection signal="area_entered" from="InteractionController" to="InteractionController" method="_on_InteractionController_area_entered"]
 [connection signal="area_exited" from="InteractionController" to="InteractionController" method="_on_InteractionController_area_exited"]
+[connection signal="timeout" from="InteractionController/Timer" to="InteractionController" method="_on_Timer_timeout"]

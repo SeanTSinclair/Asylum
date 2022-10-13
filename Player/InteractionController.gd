@@ -1,13 +1,10 @@
 extends Area2D
 
 onready var interaction_icon_instance = preload("res://Common/InteractionIcon.tscn")
+onready var check_timer = $Timer
 var interactables_in_range : Array = []
 var current_icon = null
 
-func _ready():
-	var check_timer = get_tree().create_timer(.2)
-	check_timer.connect("timeout", self, "update_interaction_icon")
-	
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
 		var closest = get_nearest_interactable()
@@ -22,6 +19,9 @@ func update_interaction_icon():
 		if position == null:
 			printerr("InteractionIconPosition node not present on " + closest.name)
 			return
+		if current_icon != null:
+			current_icon.queue_free()
+			current_icon = null
 		current_icon = interaction_icon_instance.instance()
 		current_icon.global_position = position
 		get_tree().current_scene.add_child(current_icon)
@@ -45,4 +45,7 @@ func _on_InteractionController_area_entered(area):
 func _on_InteractionController_area_exited(area):
 	interactables_in_range.remove(interactables_in_range.find(area))
 	update_interaction_icon()
-	
+
+func _on_Timer_timeout():
+	if interactables_in_range.size() > 1:
+		update_interaction_icon()

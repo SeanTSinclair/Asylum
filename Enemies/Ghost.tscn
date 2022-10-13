@@ -1,8 +1,32 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Enemies/ghost_idle.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/ghost_move.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/Ghost.gd" type="Script" id=3]
+[ext_resource path="res://Enemies/GhostStun.gdshader" type="Shader" id=4]
+
+[sub_resource type="Shader" id=21]
+code = "shader_type canvas_item;
+
+uniform vec4 stun_color: hint_color = vec4(1.0);
+uniform float stun_amount: hint_range(0.0, 1.0);
+
+void fragment() {
+	vec4 base_color = texture(TEXTURE, UV);
+	base_color.rgb = mix(base_color.rgb, stun_color.rgb, stun_amount);
+	COLOR = base_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=22]
+shader = SubResource( 21 )
+shader_param/stun_color = Color( 1, 1, 1, 1 )
+shader_param/stun_amount = null
+
+[sub_resource type="ShaderMaterial" id=20]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/stun_color = Color( 0.533333, 0.945098, 1, 1 )
+shader_param/stun_amount = 0.0
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -86,6 +110,7 @@ radius = 15.0
 height = 26.0
 
 [node name="Ghost" type="Area2D"]
+material = SubResource( 22 )
 scale = Vector2( 0.3, 0.3 )
 collision_layer = 8
 collision_mask = 0
@@ -93,6 +118,7 @@ script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 modulate = Color( 0.329412, 0.298039, 0.313726, 0.619608 )
+material = SubResource( 20 )
 position = Vector2( 0, 1 )
 frames = SubResource( 7 )
 animation = "idle"
