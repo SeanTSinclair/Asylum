@@ -86,6 +86,9 @@ position = Vector2( 50, 43 )
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 111, 75 )
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
+
 [node name="Ghost" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 211, 34 )
 
@@ -101,7 +104,7 @@ position = Vector2( 164, 55 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay/AnimatedSprite"]
@@ -116,3 +119,7 @@ position = Vector2( 157, 100 )
 
 [node name="Key2" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 53, 75 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 111, 75 )
+smoothing_enabled = true

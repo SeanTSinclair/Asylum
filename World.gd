@@ -7,6 +7,7 @@ onready var complete_tweener = $Complete/Tween
 func _ready():
 	GameInfo.connect("key_collected", self, "update_keys_collected")
 	GameInfo.connect("all_keys_collected", self, "show_door_unlocked_text")
+	randomize()
 	
 func update_keys_collected(amount):
 	key_collected_text.text = str(amount)

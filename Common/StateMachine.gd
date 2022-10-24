@@ -1,6 +1,8 @@
 extends Node
 class_name StateMachine
 
+signal changed_state(new_state)
+
 var state = null setget set_state
 var previous_state = null
 var states = {}
@@ -29,7 +31,7 @@ func _exit_state(_old_state, _new_state):
 func set_state(new_state):
 	previous_state = state
 	state = new_state
-	
+	emit_signal("changed_state", new_state)
 	if previous_state != null:
 		_exit_state(previous_state, new_state)
 	if new_state != null:

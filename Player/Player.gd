@@ -35,7 +35,7 @@ func reveal():
 func position_crosshair():
 	rotator.look_at(get_global_mouse_position())
 
-	if abs(rotator.rotation_degrees) > 360: 
+	if abs(rotator.rotation_degrees) > 360:
 		rotator.rotation_degrees = 0
 
 	if abs(rotator.rotation_degrees) > 90:

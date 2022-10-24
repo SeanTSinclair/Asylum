@@ -19,7 +19,7 @@ func _physics_process(_delta):
 					current_targets.append(collider)
 	
 	for target in current_targets:
-		target.add_stun_amount(stun_amount)
+		target.add_stun_amount(owner.owner, stun_amount)
 		
 	current_targets.clear()
 

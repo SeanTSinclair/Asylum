@@ -176,7 +176,7 @@ start_node = "idle"
 radius = 19.0263
 
 [node name="Player" type="KinematicBody2D"]
-collision_layer = 3
+collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
@@ -194,6 +194,7 @@ texture = ExtResource( 1 )
 flip_h = true
 hframes = 10
 vframes = 6
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
@@ -204,7 +205,6 @@ script = ExtResource( 3 )
 
 [node name="PlayerStats" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
-flashlight_speed_reduction_modifier = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
@@ -250,32 +250,23 @@ shadow_enabled = true
 [node name="RayCast" type="RayCast2D" parent="Rotator/Flashlight/Raycasts"]
 cast_to = Vector2( 100, 0 )
 collision_mask = 9
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="RayCast2" type="RayCast2D" parent="Rotator/Flashlight/Raycasts"]
 cast_to = Vector2( 100, 8 )
 collision_mask = 9
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="RayCast5" type="RayCast2D" parent="Rotator/Flashlight/Raycasts"]
 cast_to = Vector2( 100, 15 )
 collision_mask = 9
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="RayCast3" type="RayCast2D" parent="Rotator/Flashlight/Raycasts"]
 cast_to = Vector2( 100, -8 )
 collision_mask = 9
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="RayCast4" type="RayCast2D" parent="Rotator/Flashlight/Raycasts"]
 cast_to = Vector2( 100, -15 )
 collision_mask = 9
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="InteractionController" type="Area2D" parent="."]
 collision_layer = 0
