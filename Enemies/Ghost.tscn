@@ -141,7 +141,7 @@ script = ExtResource( 5 )
 [node name="PlayerDetection" parent="." instance=ExtResource( 6 )]
 
 [node name="WanderController" parent="." instance=ExtResource( 7 )]
-wander_range = 5
+wander_range = 30
 
 [node name="Label" type="Label" parent="."]
 margin_left = -20.0

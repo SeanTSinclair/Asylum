@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ancient Rock Animations 36x51.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Objects/Locker.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Key.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World.gd" type="Script" id=6]
+[ext_resource path="res://Common/Key.png" type="Texture" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -57,31 +58,16 @@ height = 10.0
 script = ExtResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -86.0
-margin_top = -47.0
-margin_right = 444.0
-margin_bottom = 243.0
+margin_left = -1358.0
+margin_top = -837.0
+margin_right = 1975.0
+margin_bottom = 1054.0
 color = Color( 0.156863, 0.203922, 0.211765, 1 )
-
-[node name="KeysCollected" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "0"
-
-[node name="Complete" type="Label" parent="."]
-margin_left = 58.0
-margin_top = 113.0
-margin_right = 259.0
-margin_bottom = 127.0
-text = "You have collected all the keys!"
-percent_visible = 0.0
-
-[node name="Tween" type="Tween" parent="Complete"]
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Locker" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 50, 43 )
+position = Vector2( 114, 33 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 111, 75 )
@@ -90,13 +76,28 @@ position = Vector2( 111, 75 )
 remote_path = NodePath("../../../Camera2D")
 
 [node name="Ghost" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 211, 34 )
+position = Vector2( -38, -11 )
 
 [node name="Ghost2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 225, 40 )
+position = Vector2( 320, -2 )
+
+[node name="Ghost4" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -220, 277 )
 
 [node name="Ghost3" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 226, 23 )
+position = Vector2( 311, 159 )
+
+[node name="Ghost6" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 395, 362 )
+
+[node name="Ghost7" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -248, 75 )
+
+[node name="Ghost8" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 171, -129 )
+
+[node name="Ghost5" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 130, 369 )
 
 [node name="StuffInTheWay" type="Area2D" parent="YSort"]
 position = Vector2( 164, 55 )
@@ -104,7 +105,7 @@ position = Vector2( 164, 55 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
-frame = 5
+frame = 13
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay/AnimatedSprite"]
@@ -114,12 +115,173 @@ occluder = SubResource( 10 )
 position = Vector2( 0, 0.5 )
 shape = SubResource( 11 )
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/StuffInTheWay"]
+position = Vector2( 191, 30 )
+shape = SubResource( 11 )
+
+[node name="StuffInTheWay2" type="Area2D" parent="YSort"]
+position = Vector2( 14, 109 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay2"]
+position = Vector2( 0, -9.5 )
+frames = SubResource( 9 )
+frame = 12
+playing = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay2/AnimatedSprite"]
+occluder = SubResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StuffInTheWay2"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 11 )
+
+[node name="StuffInTheWay3" type="Area2D" parent="YSort"]
+position = Vector2( 48, 224 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay3"]
+position = Vector2( 0, -9.5 )
+frames = SubResource( 9 )
+frame = 12
+playing = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay3/AnimatedSprite"]
+occluder = SubResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StuffInTheWay3"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/StuffInTheWay3"]
+position = Vector2( -276, -67 )
+shape = SubResource( 11 )
+
+[node name="StuffInTheWay4" type="Area2D" parent="YSort"]
+position = Vector2( -29, -48 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay4"]
+position = Vector2( 0, -9.5 )
+frames = SubResource( 9 )
+frame = 11
+playing = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay4/AnimatedSprite"]
+occluder = SubResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StuffInTheWay4"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 11 )
+
+[node name="StuffInTheWay5" type="Area2D" parent="YSort"]
+position = Vector2( 284, -19 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay5"]
+position = Vector2( 0, -9.5 )
+frames = SubResource( 9 )
+frame = 11
+playing = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay5/AnimatedSprite"]
+occluder = SubResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StuffInTheWay5"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 11 )
+
+[node name="StuffInTheWay6" type="Area2D" parent="YSort"]
+position = Vector2( 245, 238 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay6"]
+position = Vector2( 0, -9.5 )
+frames = SubResource( 9 )
+frame = 11
+playing = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay6/AnimatedSprite"]
+occluder = SubResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StuffInTheWay6"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 11 )
+
+[node name="StuffInTheWay7" type="Area2D" parent="YSort"]
+position = Vector2( 236, 338 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay7"]
+position = Vector2( 0, -9.5 )
+frames = SubResource( 9 )
+frame = 10
+playing = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay7/AnimatedSprite"]
+occluder = SubResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StuffInTheWay7"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/StuffInTheWay7"]
+position = Vector2( -314, -8 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="YSort/StuffInTheWay7"]
+position = Vector2( -147, -444 )
+shape = SubResource( 11 )
+
 [node name="Key" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 157, 100 )
+
+[node name="Key6" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -73, 188 )
+
+[node name="Key4" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 274, 195 )
+
+[node name="Key5" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 314, 14 )
 
 [node name="Key2" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 53, 75 )
 
+[node name="Key3" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 17, -37 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+margin_left = 10.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="KeysCollected" type="Label" parent="CanvasLayer/HBoxContainer"]
+margin_top = 13.0
+margin_right = 17.0
+margin_bottom = 27.0
+text = "0 /"
+
+[node name="KeysTotal" type="Label" parent="CanvasLayer/HBoxContainer"]
+margin_left = 21.0
+margin_top = 13.0
+margin_right = 29.0
+margin_bottom = 27.0
+text = "0"
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/HBoxContainer"]
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.643137 )
+position = Vector2( -5, 19 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 7 )
+
+[node name="Complete" type="Label" parent="CanvasLayer"]
+margin_left = 58.0
+margin_top = 113.0
+margin_right = 259.0
+margin_bottom = 127.0
+text = "You have collected all the keys!"
+percent_visible = 0.0
+
+[node name="Tween" type="Tween" parent="CanvasLayer/Complete"]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 111, 75 )
+current = true
 smoothing_enabled = true

@@ -1,16 +1,21 @@
 extends Node2D
 
-onready var key_collected_text = $KeysCollected
-onready var complete_text = $Complete
-onready var complete_tweener = $Complete/Tween
+onready var key_collected_text = $CanvasLayer/HBoxContainer/KeysCollected
+onready var keys_total = $CanvasLayer/HBoxContainer/KeysTotal
+onready var complete_text = $CanvasLayer/Complete
+onready var complete_tweener = $CanvasLayer/Complete/Tween
 
 func _ready():
 	GameInfo.connect("key_collected", self, "update_keys_collected")
 	GameInfo.connect("all_keys_collected", self, "show_door_unlocked_text")
+	call_deferred("set_total_keys_text")
 	randomize()
 	
+func set_total_keys_text():
+	keys_total.text = str(GameInfo.keys.size())
+	
 func update_keys_collected(amount):
-	key_collected_text.text = str(amount)
+	key_collected_text.text = str(amount) + " /"
 
 func show_door_unlocked_text():
 	complete_tweener.interpolate_property(complete_text, "percent_visible", 0, 1, 1, Tween.TRANS_CUBIC)
