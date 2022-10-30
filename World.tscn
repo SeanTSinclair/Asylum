@@ -58,10 +58,10 @@ height = 10.0
 script = ExtResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -1358.0
-margin_top = -837.0
-margin_right = 1975.0
-margin_bottom = 1054.0
+margin_left = -1529.0
+margin_top = -1119.0
+margin_right = 1804.0
+margin_bottom = 772.0
 color = Color( 0.156863, 0.203922, 0.211765, 1 )
 
 [node name="YSort" type="YSort" parent="."]
@@ -81,23 +81,14 @@ position = Vector2( -38, -11 )
 [node name="Ghost2" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 320, -2 )
 
-[node name="Ghost4" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -220, 277 )
-
 [node name="Ghost3" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 311, 159 )
 
 [node name="Ghost6" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 395, 362 )
-
-[node name="Ghost7" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -248, 75 )
-
-[node name="Ghost8" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 171, -129 )
+position = Vector2( 145, 318 )
 
 [node name="Ghost5" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 130, 369 )
+position = Vector2( -91, 226 )
 
 [node name="StuffInTheWay" type="Area2D" parent="YSort"]
 position = Vector2( 164, 55 )
@@ -105,7 +96,7 @@ position = Vector2( 164, 55 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
-frame = 13
+frame = 5
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay/AnimatedSprite"]
@@ -115,17 +106,13 @@ occluder = SubResource( 10 )
 position = Vector2( 0, 0.5 )
 shape = SubResource( 11 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/StuffInTheWay"]
-position = Vector2( 191, 30 )
-shape = SubResource( 11 )
-
 [node name="StuffInTheWay2" type="Area2D" parent="YSort"]
 position = Vector2( 14, 109 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay2"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
-frame = 12
+frame = 4
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay2/AnimatedSprite"]
@@ -141,7 +128,7 @@ position = Vector2( 48, 224 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay3"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
-frame = 12
+frame = 4
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay3/AnimatedSprite"]
@@ -151,17 +138,13 @@ occluder = SubResource( 10 )
 position = Vector2( 0, 0.5 )
 shape = SubResource( 11 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/StuffInTheWay3"]
-position = Vector2( -276, -67 )
-shape = SubResource( 11 )
-
 [node name="StuffInTheWay4" type="Area2D" parent="YSort"]
 position = Vector2( -29, -48 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay4"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay4/AnimatedSprite"]
@@ -177,7 +160,7 @@ position = Vector2( 284, -19 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay5"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay5/AnimatedSprite"]
@@ -193,7 +176,7 @@ position = Vector2( 245, 238 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay6"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
-frame = 11
+frame = 3
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay6/AnimatedSprite"]
@@ -209,7 +192,7 @@ position = Vector2( 236, 338 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StuffInTheWay7"]
 position = Vector2( 0, -9.5 )
 frames = SubResource( 9 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="YSort/StuffInTheWay7/AnimatedSprite"]
@@ -217,14 +200,6 @@ occluder = SubResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StuffInTheWay7"]
 position = Vector2( 0, 0.5 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/StuffInTheWay7"]
-position = Vector2( -314, -8 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="YSort/StuffInTheWay7"]
-position = Vector2( -147, -444 )
 shape = SubResource( 11 )
 
 [node name="Key" parent="YSort" instance=ExtResource( 5 )]
@@ -240,7 +215,7 @@ position = Vector2( 274, 195 )
 position = Vector2( 314, 14 )
 
 [node name="Key2" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 53, 75 )
+position = Vector2( 108, 309 )
 
 [node name="Key3" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 17, -37 )

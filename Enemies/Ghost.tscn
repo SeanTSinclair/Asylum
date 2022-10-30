@@ -154,9 +154,14 @@ valign = 1
 
 [node name="SoftCollision" parent="." instance=ExtResource( 8 )]
 
+[node name="StunReductionTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="timeout" from="StunTimer" to="." method="_on_StunTimer_timeout"]
 [connection signal="changed_state" from="GhostFSM" to="." method="_on_GhostFSM_changed_state"]
 [connection signal="can_see_player" from="PlayerDetection" to="GhostFSM" method="_on_PlayerDetection_can_see_player"]
 [connection signal="lost_player" from="PlayerDetection" to="GhostFSM" method="_on_PlayerDetection_lost_player"]
+[connection signal="timeout" from="StunReductionTimer" to="." method="_on_StunReductionTimer_timeout"]
 
 [editable path="SoftCollision"]

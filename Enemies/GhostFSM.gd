@@ -12,6 +12,10 @@ func _ready():
 	add_state("chase")
 	add_state("stunned")
 	call_deferred("set_state", states.idle)
+	
+func _physics_process(delta):
+	if player != null:
+		print(OS.get_time())
 
 func _state_logic(delta):
 	if state == states.idle: 
@@ -36,9 +40,10 @@ func choose_passive_state():
 	parent.wander_controller.start_timer(rand_range(1, 3))
 	
 func is_attacked_by(player):
-	self.player = player
-	set_state(states.chase)
-	
+	if state != states.chase:
+		self.player = player
+		set_state(states.chase)
+
 func move_to_player(delta):
 	if player != null:
 		if parent.global_position.distance_to(player.global_position) > STOP_DISTANCE:
